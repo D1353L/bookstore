@@ -1,0 +1,24 @@
+# PostgreSQL. Versions 8.2 and up are supported.
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: admin123
+  host: localhost
+  port: 5432
+
+development:
+  <<: *default
+  database: bookstore_development
+
+test:
+  <<: *default
+  database: bookstore_test
+
+production:
+  <<: *default
+  database: bookstore_production
+  username: bookstore
+  password: <%= ENV['BOOKSTORE_DATABASE_PASSWORD'] %>
