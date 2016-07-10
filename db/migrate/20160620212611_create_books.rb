@@ -6,8 +6,10 @@ class CreateBooks < ActiveRecord::Migration
       t.text :full_description
       t.string :image
       t.string :price
+      t.references :category, index: true
 
       t.timestamps
     end
+    add_foreign_key :books, :categories
   end
 end
