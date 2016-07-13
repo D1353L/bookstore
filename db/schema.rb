@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160702171112) do
+ActiveRecord::Schema.define(version: 20160713211231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,14 +25,12 @@ ActiveRecord::Schema.define(version: 20160702171112) do
   end
 
   create_table "authors_books", id: false, force: :cascade do |t|
-    t.integer  "author_id"
-    t.integer  "book_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "author_id", null: false
+    t.integer "book_id",   null: false
   end
 
-  add_index "authors_books", ["author_id"], name: "index_authors_books_on_author_id", using: :btree
-  add_index "authors_books", ["book_id"], name: "index_authors_books_on_book_id", using: :btree
+  add_index "authors_books", ["author_id", "book_id"], name: "index_authors_books_on_author_id_and_book_id", using: :btree
+  add_index "authors_books", ["book_id", "author_id"], name: "index_authors_books_on_book_id_and_author_id", using: :btree
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
@@ -72,8 +70,6 @@ ActiveRecord::Schema.define(version: 20160702171112) do
 
   add_index "reviews", ["book_id"], name: "index_reviews_on_book_id", using: :btree
 
-  add_foreign_key "authors_books", "authors"
-  add_foreign_key "authors_books", "books"
   add_foreign_key "books", "categories"
   add_foreign_key "orders", "books"
   add_foreign_key "reviews", "books"
