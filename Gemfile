@@ -21,6 +21,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
+
 gem 'rectify'
 gem 'rails_admin', '~> 0.8.1'
 gem 'cancancan'
@@ -38,6 +39,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'rails-erd'
 end
 
 group :test do

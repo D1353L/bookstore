@@ -57,6 +57,7 @@ GEM
       json (>= 1.7)
       mime-types (>= 1.16)
       mimemagic (>= 0.3.0)
+    choice (0.2.0)
     cloudinary (1.2.0)
       aws_cf_signer
       rest-client
@@ -181,6 +182,11 @@ GEM
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
+    rails-erd (1.4.7)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
+      choice (~> 0.2.0)
+      ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
     rails_admin (0.8.1)
@@ -214,6 +220,7 @@ GEM
       railties (>= 4.2.0, < 5.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    ruby-graphviz (1.2.2)
     ruby_parser (3.8.2)
       sexp_processor (~> 4.1)
     safe_yaml (1.0.4)
@@ -274,6 +281,7 @@ DEPENDENCIES
   omniauth-facebook
   pg (~> 0.15)
   rails (= 4.2.6)
+  rails-erd
   rails_admin (~> 0.8.1)
   rectify
   sass-rails (~> 5.0)
