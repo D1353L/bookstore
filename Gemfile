@@ -34,6 +34,7 @@ gem 'mini_magick'
 gem 'factory_girl_rails'
 gem 'ffaker'
 gem 'tzinfo-data'
+gem 'bxslider-rails'
 
 group :development, :test do
 end

@@ -1,0 +1,5 @@
+- books = BookService.new
+%ul.bxslider
+  - books.img_urls.each do |img|
+    %li
+      = image_tag(img)

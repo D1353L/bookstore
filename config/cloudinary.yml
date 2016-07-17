@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: d1353l
+  api_key: '488945892943498'
+  api_secret: YwYLAXF3QQejY694TpZSGiCzivc
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: d1353l
+  api_key: '488945892943498'
+  api_secret: YwYLAXF3QQejY694TpZSGiCzivc
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: d1353l
+  api_key: '488945892943498'
+  api_secret: YwYLAXF3QQejY694TpZSGiCzivc
+  enhance_image_tag: true
+  static_image_support: false
