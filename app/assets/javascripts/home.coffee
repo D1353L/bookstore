@@ -1,2 +1,2 @@
 $(document).ready ->
-  $(".bxslider").bxSlider()
+  $('.bxslider').bxSlider()

@@ -1,0 +1,23 @@
+=link_to 'Home', root_path
+>>
+=link_to 'Shop', categories_path
+
+.container
+  .row
+    .col-md-9
+      .row
+        %h2
+          = 'There are no any books' if @books.empty?
+        - @books.each do |book|
+          .col-sm-4.col-lg-4.col-md-4
+            .thumbnail
+              = image_tag book.image, class: 'img-responsive', style: 'width: 200px; height: 300px;'
+              .caption{style: 'height: 130px; overflow: hidden;'}
+                %h4.pull-right
+                  = book.price
+                %h4
+                  = link_to book.title, book_path(book.id), style: 'text-align: center;'
+                %p
+                  = book.short_description
+    .col-md-3
+      = render 'categories/categories'

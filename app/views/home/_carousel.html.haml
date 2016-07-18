@@ -1,5 +1,4 @@
-- books = BookService.new
 %ul.bxslider
-  - books.img_urls.each do |img|
-    %li
-      = image_tag(img)
+  - @books.each do |book|
+    %li{id: book.id, style: 'padding: 5px 10px 0px 100px;'}
+      = render 'books/show', book: book

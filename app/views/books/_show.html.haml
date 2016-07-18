@@ -1,0 +1,11 @@
+- book = @book || book
+%h2.book-title
+  = book.title
+by
+- authors = BooksService.new.authors_full_names(book.id)
+- authors.each_with_index do |name, index|
+  = name
+  = ',' unless index == authors.size - 1
+= image_tag book.image, class: 'book-image', style: 'float: left; padding-right: 50px;'
+%p.lead.book-short-description
+  = book.full_description
