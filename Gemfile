@@ -7,7 +7,6 @@ gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass'
-gem 'kaminari'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -32,7 +31,7 @@ gem 'mini_magick'
 gem 'factory_girl_rails'
 gem 'ffaker'
 gem 'tzinfo-data'
-gem 'bxslider-rails'
+gem 'kaminari'
 
 group :development, :test do
 end
