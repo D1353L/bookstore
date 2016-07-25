@@ -1,2 +1,6 @@
 $(document).ready ->
-  $('.bxslider').bxSlider()
+  $('.bxslider').bxSlider(
+    {
+    auto: true,
+    pause: 7000
+    })

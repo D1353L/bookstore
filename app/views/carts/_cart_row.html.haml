@@ -1,0 +1,26 @@
+.well{id: order_item.id}
+  .row
+    .col-xs-2
+      = image_tag book.image, class: 'img-responsive', style: 'width: 200px; height: 300px;'
+    .col-xs-6
+      %h4
+        = link_to book.title, book_path(book.id)
+      %p.lead.book-short-description
+        = book.short_description
+    .col-xs-4
+      = form_for order_item, remote: true do |f|
+        %h4.text-right
+          Unit Price:
+          %span{:style => 'color: green'}
+            = number_to_currency(order_item.unit_price)
+        .row
+          .col-xs-4
+            = f.number_field :quantity, value: order_item.quantity.to_i, class: 'form-control', min: 1
+            = f.hidden_field :book_id, value: book.id
+          .col-xs-8.text-right
+            .btn-group
+              = link_to 'Delete', order_item, { data: { confirm: "Are you sure you wish to delete the book #{order_item.book.title} from your cart?" },
+                method: :delete, remote: true, class: 'btn btn-danger' }
+        %h4.text-right
+          Total Price:
+          %span{:style => 'color: green'}= number_to_currency(order_item.total_price)
