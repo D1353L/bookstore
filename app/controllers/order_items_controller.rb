@@ -1,4 +1,5 @@
 class OrderItemsController < ApplicationController
+
   def create
     @order = current_order
     @book = Book.find_by_id(params[:order_item][:book_id])
@@ -24,6 +25,10 @@ class OrderItemsController < ApplicationController
     @order_item = @order.order_items.find(params[:id])
     @order_item.destroy
     @order_items = @order.order_items
+  end
+
+  def destroy_all
+    current_order.order_items.each(&:destroy)
   end
 
   private

@@ -10,5 +10,27 @@
     = link_to 'go back', root_path
     and add some items to your cart.
 - else
+  .row
+    .col-xs-8
+      %h4{style: 'text-align: center;'} Book
+    .col-xs-4
+      .col-xs-4
+        %h4 QTY
+      .col-xs-8
+        .col-xs-4
+          %h4{style: 'text-align: center;'} Unit price
+        .col-xs-4
+          %h4{style: 'text-align: center;'} Total price
   - @order_items.each do |order_item|
     = render 'carts/cart_row', book: order_item.book, order_item: order_item, show_total: true
+.col-xs-12
+  %h4{style: 'text-align: right;'}
+    Subtotal: $
+    = @order.subtotal_price
+.col-xs-12
+  .col-xs-10
+    = link_to 'Empty Cart', [:destroy_all, :order_items], class: 'btn btn-sm btn-default'
+    = link_to 'Continue Shopping', root_path, class: 'btn btn-sm btn-default'
+  .col-xs-2
+    = text_field :coupon, :code, placeholder: 'Coupon code'
+    = link_to 'Checkout', root_path, class: 'btn btn-sm btn-primary'

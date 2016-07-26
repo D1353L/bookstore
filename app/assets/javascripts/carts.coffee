@@ -1,3 +1,3 @@
 $(document).ready ->
-  $(document).on 'change', '.order-item-quantity', (e)->
-    $(this).closest('.edit_order_item').submit()
+  $(document).on 'change', '[id^="order-item-quantity"]', (e)->
+    $(this).closest('form.edit_order_item').submit()

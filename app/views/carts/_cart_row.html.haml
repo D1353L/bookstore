@@ -1,7 +1,7 @@
-.well{id: order_item.id}
+.well{style: 'height: 190px; overflow: hidden;'}
   .row
     .col-xs-2
-      = image_tag book.image, class: 'img-responsive', style: 'width: 200px; height: 300px;'
+      = image_tag book.image, class: 'img-responsive', style: 'width: 100px; height: 150px;'
     .col-xs-6
       %h4
         = link_to book.title, book_path(book.id)
@@ -9,21 +9,20 @@
         = book.short_description
     .col-xs-4
       = form_for order_item, remote: true do |f|
-        %h4.text-right
-          Unit Price:
-          %span{style: 'color: green'}
-            = number_to_currency(order_item.unit_price)
         .row
           .col-xs-4
             .col-xs-10
-              = f.number_field :quantity, value: order_item.quantity.to_i, class: 'form-control order-item-quantity', min: 1
+              = f.number_field :quantity, value: order_item.quantity.to_i, id: "order-item-quantity-#{order_item.id}",  class: 'form-control', min: 1
             .col-xs-2
               %span.glyphicon.glyphicon-refresh.cart-spinner
             = f.hidden_field :book_id, value: book.id
-          .col-xs-8.text-right
-            .btn-group
+          .col-xs-8
+            .col-xs-4
+              %h4.text-right
+                %span{style: 'color: green'}= number_to_currency(order_item.unit_price)
+            .col-xs-4
+              %h4.text-right
+                %span{style: 'color: green'}= number_to_currency(order_item.total_price)
+            .col-xs-4
               = link_to 'Delete', order_item, { data: { confirm: "Are you sure you wish to delete the book #{order_item.book.title} from your cart?" },
                 method: :delete, remote: true, class: 'btn btn-danger' }
-        %h4.text-right
-          Total Price:
-          %span{style: 'color: green'}= number_to_currency(order_item.total_price)
