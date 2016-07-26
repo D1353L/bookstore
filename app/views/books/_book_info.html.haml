@@ -11,7 +11,7 @@
     = link_to name, "http://www.google.com/search?q=#{name.gsub(' ', '+')}", target: '_blank'
     = ',' unless index == authors.size - 1
 
-  = image_tag book.image, class: 'book-image', style: 'float: left; padding-right: 50px;'
+  = image_tag book.image, class: 'book-image', style: 'float: left; padding-right: 50px; width: 300px; height: 400px;'
   %p.lead.book-full-description
     = book.full_description
   %h3.col-md-7{style: 'float: right;'}

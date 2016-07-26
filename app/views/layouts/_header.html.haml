@@ -4,16 +4,15 @@
       .navbar-brand
         The Bookstore
     .collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        %li
-          = link_to 'HOME', root_path, style: 'display: inline;'
-          |
-          = link_to 'SHOP', categories_path, style: 'display: inline;'
-        %li
-          = render 'layouts/cart_text'
-        %li
-          = link_to 'Settings', '#', style: 'display: inline;'
-          |
-          = link_to 'Orders', '#', style: 'display: inline;'
-          |
-          = link_to 'Sign out', '#', style: 'display: inline;'
+      = nav_bar do
+        = nav_link 'HOME', root_path
+
+        = nav_link 'SHOP', categories_path
+
+        = render 'layouts/cart_text'
+
+        = nav_link 'Settings', '#'
+
+        = nav_link 'Orders', '#'
+
+        = nav_link 'Sign out', '#'

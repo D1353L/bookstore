@@ -9,7 +9,6 @@ class OrderItemsController < ApplicationController
       @order_item = @order.order_items.new(quantity: params[:order_item][:quantity], book_id: @book.id, price: @book.price)
     end
     @order.save
-    @order.order_items.sort! if @order.order_items.size > 1
     session[:order_id] = @order.id
   end
 

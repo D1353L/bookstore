@@ -11,11 +11,14 @@
       = form_for order_item, remote: true do |f|
         %h4.text-right
           Unit Price:
-          %span{:style => 'color: green'}
+          %span{style: 'color: green'}
             = number_to_currency(order_item.unit_price)
         .row
           .col-xs-4
-            = f.number_field :quantity, value: order_item.quantity.to_i, class: 'form-control', min: 1
+            .col-xs-10
+              = f.number_field :quantity, value: order_item.quantity.to_i, class: 'form-control order-item-quantity', min: 1
+            .col-xs-2
+              %span.glyphicon.glyphicon-refresh.cart-spinner
             = f.hidden_field :book_id, value: book.id
           .col-xs-8.text-right
             .btn-group
@@ -23,4 +26,4 @@
                 method: :delete, remote: true, class: 'btn btn-danger' }
         %h4.text-right
           Total Price:
-          %span{:style => 'color: green'}= number_to_currency(order_item.total_price)
+          %span{style: 'color: green'}= number_to_currency(order_item.total_price)
