@@ -18,6 +18,6 @@
                 %h4
                   = link_to book.title, book_path(book.id), style: 'text-align: center;'
                 %p
-                  = book.short_description
+                  = truncate book.short_description, length: 120
     .col-md-3
       = render 'categories/categories'
