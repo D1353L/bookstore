@@ -3,5 +3,6 @@
   .list-group
     %h4
       = 'There are no any categories' if @categories.empty?
+    = link_to 'All', categories_path, class: 'list-group-item', style: 'text-align: center;'
     - @categories.each do |c|
       = link_to c.name, category_path(c.id), class: 'list-group-item', style: 'text-align: center;'

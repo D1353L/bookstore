@@ -22,11 +22,12 @@
         .col-xs-4
           %h4{style: 'text-align: center;'} Total price
   - @order_items.each do |order_item|
-    = render 'carts/cart_row', book: order_item.book, order_item: order_item, show_total: true
+    = render 'carts/cart_row', book: order_item.book, order_item: order_item
 .col-xs-12
   %h4{style: 'text-align: right;'}
-    Subtotal: $
-    = @order.subtotal_price
+    Subtotal:
+    %span#subtotal-price
+      = number_to_currency(@order.subtotal_price)
 .col-xs-12
   .col-xs-10
     = link_to 'Empty Cart', [:destroy_all, :order_items], class: 'btn btn-sm btn-default'
