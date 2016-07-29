@@ -1,4 +1,7 @@
-- book = @book || book
+- book ||= @book
+- description ||= @description
+- max_description_length ||= @max_description_length
+
 .book-container{style: 'padding: 5px 10px 0px 100px;'}
   %h2.book-title
     - if @book
@@ -12,7 +15,8 @@
     = ',' unless index == authors.size - 1
 
   = image_tag book.image, class: 'book-image', style: 'float: left; padding-right: 50px; width: 300px; height: 400px;'
-  = render 'books/book_full_description', book: book
+
+  = render('books/book_description', book: book, description: description, max_length: max_description_length)
   
   %h3.col-md-7{style: 'float: right;'}
     = form_for @order_item, remote: true, class: 'form-inline' do |f|

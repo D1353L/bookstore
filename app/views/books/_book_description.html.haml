@@ -1,0 +1,11 @@
+%p.lead.book-description
+  - if book.send(description).length > max_length
+    = truncate book.send(description), length: max_length
+    = link_to 'read more', 'javascript:void(0);', id: "read-more"
+    :javascript
+      $("#read-more").on('click', function(e) {
+        e.preventDefault()
+        $(this).parent().html(`#{book.send(description)}`)
+      })
+  - else
+    = book.send(description)
