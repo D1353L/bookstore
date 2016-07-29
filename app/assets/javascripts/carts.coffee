@@ -1,5 +1,4 @@
 $(document).ready ->
-  $(document).on 'change', '[id^="order-item-quantity"]', (e)->
-    $(this).closest('form.edit_order_item').submit()
+  $(document).on 'submit', '[id^="edit_order_item"]', (e)->
     $(this).closest('div.col-xs-4').find('span.cart-spinner').fadeIn 'slow'
-    $(this).addClass('disabled-field')
+    $(this).find('[id^="order-item-quantity"]').addClass('disabled-field')
