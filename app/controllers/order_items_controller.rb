@@ -29,6 +29,7 @@ class OrderItemsController < ApplicationController
 
   def destroy_all
     current_order.order_items.each(&:destroy)
+    redirect_to cart_path
   end
 
   private

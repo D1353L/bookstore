@@ -12,7 +12,7 @@
     = ',' unless index == authors.size - 1
 
   = image_tag book.image, class: 'book-image', style: 'float: left; padding-right: 50px; width: 300px; height: 400px;'
-  = render 'book_full_description', book: book
+  = render 'books/book_full_description', book: book
   
   %h3.col-md-7{style: 'float: right;'}
     = form_for @order_item, remote: true, class: 'form-inline' do |f|

@@ -3,19 +3,19 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  resources :categories, path: '/shop/categories'
+
   resources :reviews
 
   resources :orders
 
-  resources :order_items do
+  resources :order_items, only: [:create, :update, :destroy] do
     collection do
       delete :destroy_all
     end
   end
 
   resource :cart, only: [:show]
-
-  resources :categories
 
   resources :books
 
