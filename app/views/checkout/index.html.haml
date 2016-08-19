@@ -1,0 +1,14 @@
+%p.lead Checkout
+.container
+  .row
+    .col-xs-2
+      = link_to 'ADDRESS', '#', style: 'text-decoration: underline;'
+    .col-xs-2
+      = link_to 'DELIVERY', '#'
+    .col-xs-2
+      = link_to 'PAYMENT', '#'
+    .col-xs-2
+      = link_to 'CONFIRM', '#'
+    .col-xs-2
+      = link_to 'COMPLETE', '#'
+= render 'checkout/address', billing: @billing_address, shipping: @shipping_address, order: @order

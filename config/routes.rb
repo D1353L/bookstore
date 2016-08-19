@@ -21,4 +21,10 @@ Rails.application.routes.draw do
 
   resources :authors
 
+  resources :checkout
+
+  resources :billing_addresses
+
+  resources :shipping_addresses
+
 end
