@@ -9,9 +9,10 @@ Rails.application.routes.draw do
 
   resources :orders
 
-  resources :order_items, only: [:create, :update, :destroy] do
+  resources :order_items, only: [:create, :destroy] do
     collection do
       delete :destroy_all
+      patch :update_all
     end
   end
 

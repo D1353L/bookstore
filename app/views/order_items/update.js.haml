@@ -1,3 +1,0 @@
-$("a.cart-text").html("#{escape_javascript(render 'layouts/cart_link')}")
-$("div.well##{@order_item.id}").find('span.total-price').html("#{number_to_currency(@order_item.total_price)}")
-$("#subtotal-price").html("#{number_to_currency(@order.subtotal_price)}")

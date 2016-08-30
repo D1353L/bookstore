@@ -19,7 +19,7 @@
   = render('books/book_description', description: description, max_length: max_description_length)
   
   %h3.col-md-7{style: 'float: right;'}
-    = form_for @order_item, remote: true, class: 'form-inline' do |f|
+    = form_for @order_item, class: 'form-inline' do |f|
       .col-md-2.price-text
         = f.label :price, '$'+book.price.to_s
       .col-md-3

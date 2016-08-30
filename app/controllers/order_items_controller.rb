@@ -11,13 +11,19 @@ class OrderItemsController < ApplicationController
     end
     @order.save
     session[:order_id] = @order.id
+
+    redirect_to :back
   end
 
-  def update
+  def update_all
     @order = current_order
-    @order_item = @order.order_items.find(params[:id])
-    @order_item.update_attributes(order_item_params)
+    params['order_item'].keys.each do |id|
+      @order_item = @order.find(id.to_i)
+      @order_item.update_attributes(params['order_item'][id])
+    end
     @order_items = @order.order_items
+
+    redirect_to :back
   end
 
   def destroy
@@ -25,11 +31,13 @@ class OrderItemsController < ApplicationController
     @order_item = @order.order_items.find(params[:id])
     @order_item.destroy
     @order_items = @order.order_items
+
+    redirect_to :back
   end
 
   def destroy_all
     current_order.order_items.each(&:destroy)
-    redirect_to cart_path
+    redirect_to :back
   end
 
   private
