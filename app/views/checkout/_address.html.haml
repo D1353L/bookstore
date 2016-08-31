@@ -1,9 +1,9 @@
-.container
+.container{style: 'margin-top: 20px;'}
   .row
     .col-xs-4 BILLING ADDRESS
     .col-xs-4 SHIPPING ADDRESS
     .col-xs-4 ORDER SUMMARY
-  .row
+  .row{style: 'margin-top: 20px;'}
     .col-xs-4
       = form_for billing do |f|
         -[:first_name,:last_name, :street_address, :city, :zip, :phone].each do |field|
