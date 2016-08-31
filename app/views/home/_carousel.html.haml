@@ -1,4 +1,5 @@
 %ul.bxslider
   - @books.each do |book|
     %li{id: book.id}
-      = render 'books/book_info', book: book, description: book.short_description, max_description_length: 1000
+      = render 'books/book_info', book: book, description: book.short_description,
+        max_description_length: 1000

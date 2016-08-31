@@ -21,18 +21,20 @@
           %h4{style: 'text-align: center;'} Unit price
         .col-xs-4
           %h4{style: 'text-align: center;'} Total price
-  - @order_items.each do |order_item|
-    = render 'carts/cart_row', book: order_item.book, order_item: order_item
-.col-xs-12
-  %h4{style: 'text-align: right;'}
-    Subtotal:
-    %span#subtotal-price
-      = number_to_currency(@order.subtotal_price)
-.col-xs-12
-  .col-xs-8
-    = link_to 'Empty Cart', destroy_all_order_items_path, method: 'DELETE', class: 'btn btn-sm btn-default'
-    = link_to 'Continue Shopping', categories_path, class: 'btn btn-sm btn-default'
-    = link_to 'Update', update_all_order_items_path, remote: true, method: 'PATCH', class: 'btn btn-sm btn-default'
-  .col-xs-4
-    = text_field :coupon, :code, placeholder: 'Coupon code'
-    = link_to 'Checkout', checkout_index_path, class: 'btn btn-sm btn-primary'
+  = form_tag update_all_order_items_path, method: :put do
+    - @order_items.each do |order_item|
+      = fields_for "order_items[]", order_item do |f|
+        = render 'carts/cart_row', order_item: order_item, f: f
+    .col-xs-12
+      %h4{style: 'text-align: right;'}
+        Subtotal:
+        %span#subtotal-price
+          = number_to_currency(@order.subtotal_price)
+    .col-xs-12
+      .col-xs-8
+        = link_to 'Empty Cart', destroy_all_order_items_path, method: 'DELETE', class: 'btn btn-sm btn-default'
+        = link_to 'Continue Shopping', categories_path, class: 'btn btn-sm btn-default'
+        = submit_tag 'Update', class: 'btn btn-sm btn-default'
+      .col-xs-4
+        = text_field_tag :coupon, nil, placeholder: 'Coupon code'
+        = link_to 'Checkout', checkout_index_path, class: 'btn btn-sm btn-primary'

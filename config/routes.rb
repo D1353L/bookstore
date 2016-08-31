@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :order_items, only: [:create, :destroy] do
     collection do
       delete :destroy_all
-      patch :update_all
+      put :update_all
     end
   end
 

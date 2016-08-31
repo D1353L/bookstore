@@ -1,26 +1,23 @@
 .well{id: order_item.id, style: 'height: 190px; overflow: hidden;'}
   .row
     .col-xs-2
-      = image_tag book.image, class: 'img-responsive', style: 'width: 100px; height: 150px;'
+      = image_tag order_item.book.image, class: 'img-responsive', style: 'width: 100px; height: 150px;'
     .col-xs-6
       %h4
-        = link_to book.title, book_path(book.id)
+        = link_to order_item.book.title, book_path(order_item.book.id)
       %p.lead.book-short-description
-        = truncate book.short_description, length: 360
+        = truncate order_item.book.short_description, length: 360
     .col-xs-4
-      = form_for order_item do |f|
-        .row
+      .row
+        .col-xs-4
+          = f.number_field :quantity, value: order_item.quantity.to_i,
+            id: "order-item-quantity-#{order_item.id}", class: 'form-control bfh-number', min: 1
+        .col-xs-8.order-item-data
           .col-xs-4
-            = f.number_field :quantity, value: order_item.quantity.to_i, id: "order-item-quantity-#{order_item.id}",  class: 'form-control bfh-number', min: 1
-            = f.hidden_field :book_id, value: book.id
-          .col-xs-8.order-item-data
-            .col-xs-4
-              %h4.text-right
-                %span.unit-price{style: 'color: green'}= number_to_currency(order_item.unit_price)
-            .col-xs-4
-              %h4.text-right
-                %span.total-price{style: 'color: green'}= number_to_currency(order_item.total_price)
-            .col-xs-4
-              = link_to 'Delete', order_item, { data: { confirm: "Are you sure you wish to delete the book #{order_item.book.title} from your cart?" },
-                method: :delete, class: 'btn btn-danger' }
-            
+            %h4.text-right
+              %span.unit-price{style: 'color: green'}= number_to_currency(order_item.unit_price)
+          .col-xs-4
+            %h4.text-right
+              %span.total-price{style: 'color: green'}= number_to_currency(order_item.total_price)
+          .col-xs-4
+            = link_to 'Delete', order_item, { data: { confirm: "Are you sure you wish to delete the book #{order_item.book.title} from your cart?" }, method: :delete, class: 'btn btn-danger' }

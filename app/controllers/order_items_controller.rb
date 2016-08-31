@@ -17,9 +17,9 @@ class OrderItemsController < ApplicationController
 
   def update_all
     @order = current_order
-    params['order_item'].keys.each do |id|
-      @order_item = @order.find(id.to_i)
-      @order_item.update_attributes(params['order_item'][id])
+    params[:order_items].keys.each do |id|
+      @order_item = @order.order_items.find_by_id(id.to_i)
+      @order_item.update_attributes(params[:order_items][id].permit(:quantity))
     end
     @order_items = @order.order_items
 
