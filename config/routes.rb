@@ -24,8 +24,4 @@ Rails.application.routes.draw do
 
   resources :checkout
 
-  resources :billing_addresses
-
-  resources :shipping_addresses
-
 end

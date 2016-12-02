@@ -5,6 +5,7 @@
     .col-xs-4 ORDER SUMMARY
   .row{style: 'margin-top: 20px;'}
     .col-xs-4
+      - require 'pry'; binding.pry
       = form_for billing do |f|
         -[:first_name,:last_name, :street_address, :city, :zip, :phone].each do |field|
           .form-group
@@ -14,6 +15,6 @@
     .col-xs-4
       = form_for order do |f|
         .form-group
-          = f.label 'ITEM TOTAL:'
+          = f.label "ITEM TOTAL: #{order.subtotal_price.to_s}"
         .form-group
-          = f.label 'ORDER TOTAL:'
+          = f.label "ORDER TOTAL: #{order.total_price.to_s}"

@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   belongs_to :state
+  belongs_to :coupon
   has_many :order_items
   before_create :set_order_status
   before_save :update_subtotal

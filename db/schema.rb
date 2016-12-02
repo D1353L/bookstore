@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819150315) do
+ActiveRecord::Schema.define(version: 20161007134211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 20160819150315) do
     t.datetime "updated_at"
   end
 
+  create_table "coupons", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.decimal  "discount",   null: false
+    t.boolean  "available",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "coupons", ["name"], name: "index_coupons_on_name", using: :btree
+
   create_table "order_items", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "book_id"
@@ -81,6 +91,7 @@ ActiveRecord::Schema.define(version: 20160819150315) do
     t.datetime "updated_at"
     t.decimal  "total_price",    precision: 12, scale: 2
     t.decimal  "subtotal_price", precision: 12, scale: 2
+    t.integer  "coupon_id"
   end
 
   add_index "orders", ["state_id"], name: "index_orders_on_state_id", using: :btree
@@ -116,6 +127,7 @@ ActiveRecord::Schema.define(version: 20160819150315) do
   add_foreign_key "books", "categories"
   add_foreign_key "order_items", "books"
   add_foreign_key "order_items", "orders"
+  add_foreign_key "orders", "coupons"
   add_foreign_key "orders", "states"
   add_foreign_key "reviews", "books"
 end
