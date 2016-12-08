@@ -1,0 +1,19 @@
+.container{style: 'margin-top: 20px;'}
+  .row
+    .col-xs-4 BILLING ADDRESS
+    .col-xs-4 SHIPPING ADDRESS
+    .col-xs-4 ORDER SUMMARY
+  .row{style: 'margin-top: 20px;'}
+    .col-xs-4
+      = simple_form_for wizard_path(:address) do |f|
+        -[:first_name, :last_name, :street_address, :city, :zip, :phone].each do |field|
+          .form-group
+            = f.input field, class: 'form-control', placeholder: field
+        = f.button :submit, 'SAVE AND CONTINUE', class: 'btn btn-default'
+    .col-xs-4
+    .col-xs-4
+      = simple_form_for @order do |f|
+        .form-group
+          = f.label :subtotal_price, "ITEM TOTAL: #{number_to_currency(@order.subtotal_price)}"
+        .form-group
+          = f.label :total_price, "ORDER TOTAL: #{number_to_currency(@order.total_price)}"
